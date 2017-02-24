@@ -1,5 +1,16 @@
 const bunyan = require('bunyan');
 
+const _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  } return target;
+};
+
 const Level = {
   error: 'error',
   warn: 'warn',
@@ -41,7 +52,7 @@ Logger.prototype.log = function (msg, level = 'info', { extractor = res => res }
     if (typeof descriptor.value !== 'function') {
       throw new SyntaxError('Only functions can be marked with log');
     }
-    return {
+    return _extends({
       ...descriptor,
       value: function logWrapper() {
         const args = [...arguments];
@@ -71,7 +82,7 @@ Logger.prototype.log = function (msg, level = 'info', { extractor = res => res }
           throw fail(e);
         }
       },
-    };
+    });
   };
 };
 
