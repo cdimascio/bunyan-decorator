@@ -19,11 +19,10 @@ const l = new Logger(bunyan.createLogger({
 
 const log = l.log;
 
-
-// Now decorator your class method to log it
 class MyClass {
-  @log(Level.info)
 
+  // Decorator your class method to log it
+  @log(Level.info)
   searchById(id) {
     return MySearchService.byId(id);
   }
