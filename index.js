@@ -53,7 +53,7 @@ Logger.prototype.log = function (msg, level = 'info', { extractor = res => res }
       throw new SyntaxError('Only functions can be marked with log');
     }
     return _extends({
-      ...descriptor,
+      descriptor,
       value: function logWrapper() {
         const args = [...arguments];
         const module = this.constructor.name || target.constructor.name;
