@@ -49,7 +49,7 @@ Note all log records include all default bunyan property as well as the class na
 
 #### Pretty
 ```
-02:12:41.894Z  INFO ecl-registration: SchoolsService.all(...) (module=SchoolsService, method=all(...), elapsedTime=428.553181)
+02:12:41.894Z  INFO my-app: SchoolsService.all(...) (module=SchoolsService, method=all(...), elapsedTime=428.553181)
     result: [
       {
         "id": "sampleschoolid1",
@@ -82,7 +82,7 @@ Note all log records include all default bunyan property as well as the class na
 
 #### Raw
 ```json
-"name":"ecl-registration","hostname":"Carmines-MacBook-Pro-7.local","pid":58820,"level":30,"module":"ExpressServer","method":"listen","msg":"up
+"name":"my-app","hostname":"Carmines-MacBook-Pro-7.local","pid":58820,"level":30,"module":"ExpressServer","method":"listen","msg":"up
  and running in development @: Carmines-MacBook-Pro-7.local on port: 3003}","time":"2017-02-24T02:15:38.065Z","v":0}
 {"name":"ecl-registration","hostname":"Carmines-MacBook-Pro-7.local","pid":58820,"level":30,"module":"SchoolsService","method":"all(...)","elaps
 edTime":404.09158199999996,"result":[{"id":"sampleschoolid1","location":{"geo":{"lat":-1,"lon":-1},"address":{"street":"10 street rd","city":"li
