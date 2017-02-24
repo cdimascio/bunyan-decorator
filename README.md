@@ -24,11 +24,8 @@ const log = l.log;
 class MyClass {
   @log(Level.info)
 
-  searchById(req, res) {
-    return req.services[this._serviceClass]
-      .byId(req.params.id)
-      .then(json(res))
-      .catch(error(res));
+  searchById(id) {
+    return MySearchService.byId(id);
   }
 }
 ```
@@ -41,11 +38,8 @@ class MyClass {
 
   // This extractor will transform the result nil, thus not return value is logged
   @log(Level.info, { extractor: result => {} })
-  searchById(req, res) {
-    return req.services[this._serviceClass]
-      .byId(req.params.id)
-      .then(json(res))
-      .catch(error(res));
+  searchById(id) {
+    return MySearchService.byId(id);
   }
 }
 ```
