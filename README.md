@@ -20,9 +20,10 @@ const l = new Logger(bunyan.createLogger({
 const log = l.log;
 
 
-// Now decorator you class method
+// Now decorator your class method to log it
 class MyClass {
   @log(Level.info)
+
   searchById(req, res) {
     return req.services[this._serviceClass]
       .byId(req.params.id)
@@ -35,9 +36,10 @@ class MyClass {
 ### Extractors
 Extractors enable you to modify the result logged by the bunyan decorator
 
-```
+```javascript
 class MyClass {
-  // This extractor ensure the promise result is not logged
+
+  // This extractor will transform the result nil, thus not return value is logged
   @log(Level.info, { extractor: result => {} })
   searchById(req, res) {
     return req.services[this._serviceClass]
