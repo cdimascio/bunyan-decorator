@@ -35,15 +35,22 @@ function Logger(bunyanLogger) {
   this.Level = Level;
 }
 
-Logger.prototype.log = function (msg, level = 'info', { extractor = res => res } = {}) {
+Logger.prototype.log = function (msg, level, options) {
+  if (options && !options.extractor) {
+    throw new Error('options missing extractor');
+  }
+  options = options || { extractor: res => res };
+  level = level || 'info';
   const self = this;
+
+  // rebuild options object based on params
   const opts = {};
   if (isLevel(msg)) {
-    opts.extractor = (level && level.extractor) || extractor;
+    opts.extractor = (level && level.extractor) || options.extractor;
     opts.level = msg;
     opts.msg = null;
   } else if (msg.extractor) {
-    opts.extractor = (msg && msg.extractor) || extractor;
+    opts.extractor = (msg && msg.extractor) || options.extractor;
     opts.level = 'info';
     opts.msg = null;
   }
