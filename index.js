@@ -62,7 +62,7 @@ Logger.prototype.log = function (msg, level, options) {
     return _extends({
       descriptor,
       value: function logWrapper() {
-        const args = [...arguments];
+        const args = arguments;
         const module = this.constructor.name || target.constructor.name;
         const method = `${key}(...)`;
         opts.msg = opts.msg || `${module}.${method}`;
