@@ -69,7 +69,8 @@ Logger.prototype.log = function (msg, level, options) {
         const t0 = process.hrtime();
 
         const success = r => {
-          const [elapsedTimeSec, elapsedTimeNano] = process.hrtime(t0);
+          const elapsedTimeSec = process.hrtime(t0)[0];
+          const elapsedTimeNano = process.hrtime(t0)[1];
           const elapsedTime = elapsedTimeSec * Math.pow(10, 3) + elapsedTimeNano *  Math.pow(10, -6);
           self.logger[opts.level]({ module, method, elapsedTime, result: opts.extractor(r) }, opts.msg);
           return r;
